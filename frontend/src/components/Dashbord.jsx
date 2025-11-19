@@ -32,7 +32,7 @@ const fetchLinks = async () => {
 const handleAddLink = async () => {
   if (!newUrl) return toast.error("Enter a URL.");
   try {
-    await axios.post(`http://localhost:5000/api/links`, {
+    await axios.post(`${API}/api/links`, {
       url: newUrl,
       code: customCode || undefined,
     });
@@ -49,7 +49,7 @@ const handleAddLink = async () => {
 
   const handleDelete = async (code) => {
     try {
-      await axios.delete(`http://localhost:5000/api/links/${code}`);
+      await axios.delete(`${API}/api/links/${code}`);
       toast.success("Deleted successfully!");
       fetchLinks();
     } catch (err) {
