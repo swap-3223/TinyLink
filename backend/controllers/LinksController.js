@@ -49,7 +49,7 @@ const createLink = async(req,res)=>{
     });
     } catch (err) {
     console.error("Error creating link", err);
-    res.status(500).json({ error: "Internal Server error" });
+    res.status(500).json({ error: err });
   }
 };
 
