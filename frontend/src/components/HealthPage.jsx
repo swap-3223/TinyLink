@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 const HealthPage = () => {
+  const API = "https://tinylink-1-xshp.onrender.com";
   const [health, setHealth] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -9,7 +10,7 @@ const HealthPage = () => {
   const fetchHealth = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/healthz");
+      const res = await axios.get(`${API}/healthz`);
       setHealth(res.data);
       setError(null);
     } catch (err) {

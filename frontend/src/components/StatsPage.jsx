@@ -4,6 +4,7 @@ import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 const StatsPage = () => {
+  const API = "https://tinylink-1-xshp.onrender.com";
   const { code } = useParams();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -11,7 +12,7 @@ const StatsPage = () => {
   const fetchStats = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:5000/api/links/${code}`);
+      const res = await axios.get(`${API}/api/links/${code}`);
       setData(res.data);
     } catch (err) {
       toast.error("Stats not found");
