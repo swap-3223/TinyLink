@@ -44,7 +44,7 @@ const createLink = async(req,res)=>{
     });
     } catch (err) {
     console.error("Error creating link", err);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Internal Server error" });
   }
 };
 
@@ -57,7 +57,7 @@ const getAllLinks = async(req,res)=>{
         })
     } catch (err) {
     console.error("Error fetching links", err);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Internal Server error" });
   }
 };
 
@@ -73,7 +73,7 @@ const getLinkByCode = async (req,res)=>{
         res.json(result.rows[0])
     } catch (error) {
         console.error("Error fetching stats", error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Internal Server error" });
     }
 }
 
@@ -90,7 +90,7 @@ const deleteLink = async(req,res)=>{
 
   } catch (error) {
     console.error("Error deleting link", error);
-    res.status(500).json({ error: "Server error" });
+    res.status(500).json({ error: "Internal Server error" });
   }
 };
 
@@ -110,7 +110,7 @@ const redirectLink = async(req,res)=>{
         return res.redirect(link.url)
     } catch (error) {
         console.log("Error redirecting link",error)
-        return res.status(500).json({error:"Server error"})
+        return res.status(500).json({error:"Internal Server error"})
     }
 }
 export {getAllLinks, getLinkByCode, createLink, deleteLink, redirectLink}
