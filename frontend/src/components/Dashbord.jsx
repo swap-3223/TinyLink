@@ -7,11 +7,12 @@ const Dashboard = () => {
   const [loading, setLoading] = useState(false);
   const [newUrl, setNewUrl] = useState("");
   const [customCode, setCustomCode] = useState("");
+const API = "https://tinylink-1-xshp.onrender.com";
 
 const fetchLinks = async () => {
   setLoading(true);
   try {
-    const res = await axios.get('http://localhost:5000/api/links');
+    const res = await axios.get(`${API}/api/links`);
     // Extract the links array from response
     setLinks(Array.isArray(res.data.links) ? res.data.links : []);
   } catch (err) {
