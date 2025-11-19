@@ -21,7 +21,6 @@ const createLink = async(req,res)=>{
         error: "Code must be 6 to 8 characters long"
       });
     }
-
         let finalCode = code || generateCode(6);
 
         const exists = await pool.query(
@@ -32,10 +31,16 @@ const createLink = async(req,res)=>{
         return res.status(409).json({ error: "Code already exists" });
         }
 
+    // await pool.query(
+    //   "INSERT INTO links (code, url) VALUES ($1, $2)",
+    //   [finalCode, url]
+    // );
+
     await pool.query(
-      "INSERT INTO links (code, url) VALUES ($1, $2)",
-      [finalCode, url]
-    );
+  "INSERT INTO links (code, url, clicks, last_clicked) VALUES ($1, $2, 0, NOW())",
+  [finalCode, url]
+);
+
 
     res.json({
       message: "Short link created",
